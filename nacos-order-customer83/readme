@@ -1,0 +1,4 @@
+调用nacos-payment-provider服务
+
+discover服务注册
+config 从nacos获取配置文件

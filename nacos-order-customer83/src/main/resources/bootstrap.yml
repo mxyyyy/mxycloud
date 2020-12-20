@@ -1,0 +1,31 @@
+#server:
+#  port: 83
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: nacos-order-customer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.243.129:8848 #nacos作为注册中心的地址，nacos配置在linux
+      config:
+        server-addr: 192.168.243.129:8848 #nacos作为配置中心的地址
+        file-extension: yaml #指定配置文件为yaml格式
+#        namespace: mxyid  #指定配置文件所在的命名空间
+#        group: DEV_GROUP #指定Group为DEV_GROUP的配置文件
+#service-url:
+#  nacos-payment-service: http://nacos-payment-provider
+
+
+# 上面的配置找到nacos中对应的配置文件 就是: 默认的public命名空间下, 并且group为DEFAULT_GROUP的 nacos-order-customer-dev.yaml文件 （DATA ID）
+
+# nacos找对应配置文件的规则：${prefix}-${spring.profiles.active}.${file-extension}
+# prefix 默认是spring.application.name, 也可以通过配置 spring.cloud.nacos.config.prefix来指定
+# spring.profiles.active可以为空，为空前面的连接符"-"会自动去除
+# file-extension 就是spring.cloud.nacos.config.file-extension
+
+logging:
+  level:
+    com.mxy.springcloud.order.feign: debug
