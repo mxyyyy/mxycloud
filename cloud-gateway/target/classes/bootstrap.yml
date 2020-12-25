@@ -1,0 +1,23 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: cloud-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.243.129:8848
+    gateway:
+      routes:
+      - id: nacos-payment-provider-route
+        uri: lb://nacos-payment-provider
+        predicates:
+          - Path=/a/**    #请求路径为 http://localhost:9000/a/payment/1,将会转发到nacos-payment-provider服务的/payment/1 接口
+        filters:
+          - StripPrefix=1     #将请求路径去除从左边截取一个路径的长度
+      - id: nacos-order-customer-route
+        uri: lb://nacos-order-customer
+        predicates:
+          - Path=/b/**
+        filters:
+          - StripPrefix=1

@@ -1,23 +1,27 @@
 package com.mxy.springcloud.order;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * 类注释
- *
  * @author 47573
  * @since 2020-12-18 14:45
  */
+@Slf4j
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableFeignClients
+@ComponentScan({
+        "com.mxy.springcloud.commons"
+        ,"com.mxy.springcloud.order"
+        })
 public class OrderApplication {
 
     public static void main(String[] args) {
@@ -37,4 +41,5 @@ public class OrderApplication {
     {
         return new RestTemplate();
     }
+
 }

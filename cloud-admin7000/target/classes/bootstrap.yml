@@ -1,0 +1,10 @@
+server:
+  port: 7000
+
+spring:
+  application:
+    name: cloud-admin
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: 192.168.243.129:8848 #nacos作为注册中心的地址，nacos配置在linux

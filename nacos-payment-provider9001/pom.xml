@@ -26,6 +26,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
+        <!-- admin预警client端依赖 -->
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-client</artifactId>
+        </dependency>
+
         <!--日常通用jar包配置-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
